@@ -1,0 +1,15 @@
+use_default_settings: true
+
+server:
+  secret_key: "sonia-searxng-local-2026"
+  limiter: false
+  image_proxy: false
+
+search:
+  default_lang: "es"
+  formats:
+    - html
+    - json
+
+general:
+  instance_name: "SonIA Search"

@@ -1,0 +1,65 @@
+# MODELOS (toda la carpeta excepto Modelfile)
+models/
+!models/Modelfile
+
+# MODELOS LLM (50GB+)
+
+models/llama-3.1-8b-instruct/
+models/llama-trt-checkpoint/
+models/llama-trt-engine/
+models/minilm/
+models/nomic/
+models/huggingface/
+*.safetensors
+*.bin
+*.gguf
+*.ggml
+*.pth
+*.engine
+
+# ENTORNOS VIRTUALES
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# NODE / FRONTEND
+node_modules/
+web-ui/dist/
+.pnp
+
+# BASE DE DATOS
+web-ui/data/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# CREDENCIALES Y SECRETOS
+.env
+.env.*
+gdrive_sync/credentials/
+**/service_account.json
+**/credentials.json
+**/token.json
+
+# DATOS DE CLIENTES
+exports/
+
+# QDRANT
+qdrant/
+qdrant_backup/
+
+# LOGS Y ESTADO RUNTIME
+*.log
+logs/
+gdrive_sync/logs/
+gdrive_sync/state/
+
+# BACKUPS MANUALES
+*.bak
+*.bak.*
+
+# ARCHIVOS VACÍOS/TEMPORALES

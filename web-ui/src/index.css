@@ -1,0 +1,209 @@
+:root {
+  --assistant-bg: #E8E8F0;
+}
+.dark {
+  --assistant-bg: #23232C;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-50 text-navy-800 transition-colors duration-200;
+  }
+  .dark body,
+  body.dark-body {
+    @apply text-dark-text;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-navy-300/40 rounded-full;
+}
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-dark-muted/40;
+}
+
+/* Message bubble asymmetric radius */
+
+/* User bubble — light/dark aware */
+.user-bubble {
+  background-color: #F0EDCC;
+  border: 2px solid #B8A800;
+  color: #2E2E38;
+}
+.dark .user-bubble {
+  background-color: #2E2E38;
+  border: 2px solid #FFE600;
+  color: #F6F6FA;
+}
+.rounded-bubble-user {
+  border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+}
+.rounded-bubble-assistant {
+  border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+}
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeInUp 0.3s ease-out;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing indicator dots */
+.bounce-dot {
+  animation: bounceDot 1.4s ease-in-out infinite;
+}
+@keyframes bounceDot {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Textarea auto-resize helper */
+.textarea-auto {
+  field-sizing: content;
+  min-height: 44px;
+  max-height: 120px;
+}
+
+/* Sidebar transition */
+.sidebar-transition {
+  transition: width 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+@media (max-width: 767px) {
+  .sidebar-transition {
+    transition: transform 0.25s ease-in-out;
+  }
+}
+
+/* Chat font variants */
+.chat-font-default { font-family: "DM Sans", system-ui, sans-serif; }
+.chat-font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+.chat-font-system { font-family: sans-serif; }
+.chat-font-dyslexic { font-family: "OpenDyslexic", "DM Sans", sans-serif; }
+
+/* Markdown tables — Soutec style */
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75rem 0;
+  font-size: 0.8125rem;
+  display: block;
+  overflow-x: auto;
+}
+.prose thead th {
+  background: #0B1A2E;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.prose tbody td {
+  border: 1px solid #E8EFF3;
+  padding: 0.5rem 0.75rem;
+}
+.prose tbody tr:nth-child(even) {
+  background: #F0F7FA;
+}
+.prose tbody tr:hover {
+  background: #E8EFF3;
+}
+/* Dark mode tables */
+.dark .prose thead th {
+  background: #111E33;
+  color: #CAE9F5;
+}
+.dark .prose tbody td {
+  border-color: #1A2D45;
+}
+.dark .prose tbody tr:nth-child(even) {
+  background: #0A1628;
+}
+.dark .prose tbody tr:hover {
+  background: #1A2D45;
+}
+
+/* Streaming cursor animation */
+.streaming-cursor > *:last-child::after {
+  content: '\25CB';
+  animation: blink 1s step-end infinite;
+  color: rgb(13, 148, 136);
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Inline citation badges */
+.citation {
+  display: inline;
+  background: rgba(20, 184, 166, 0.15);
+  color: rgb(13, 148, 136);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  margin: 0 0.1rem;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.dark .citation {
+  background: rgba(20, 184, 166, 0.2);
+  color: rgb(94, 234, 212);
+}
+
+/* Drop overlay animation */
+.drop-overlay-fade-in {
+  animation: dropFadeIn 0.2s ease-out;
+}
+@keyframes dropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.drop-bounce {
+  animation: dropBounce 1s ease-in-out infinite;
+}
+@keyframes dropBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Suggestion bar animation */
+.suggestion-fade-in {
+  animation: suggestionFadeIn 0.3s ease-out;
+}
+.suggestion-fade-in > button {
+  opacity: 0;
+  animation: suggestionItemIn 0.3s ease-out forwards;
+}
+@keyframes suggestionFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes suggestionItemIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}

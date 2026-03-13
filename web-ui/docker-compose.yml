@@ -1,0 +1,12 @@
+services:
+  auditia-web-ui:
+    build: .
+    container_name: auditia-web-ui
+    network_mode: host
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=8081
+      - GATEWAY_URL=http://localhost:8091
+    restart: unless-stopped
